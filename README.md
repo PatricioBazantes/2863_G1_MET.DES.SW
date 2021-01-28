@@ -2,6 +2,4 @@
 Proyectos para Metodologias Desarrollo de Software
 
 Integrantes:
-Alquinga Wilmer
-Bazantes Patricio
-Caraguay Richard
+Alquinga Wilmer, Bazantes Patricio, Caraguay Richard
