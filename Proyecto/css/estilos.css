@@ -1,0 +1,36 @@
+body{
+    background-color: rgb(4, 168, 4);
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.cont1{
+    background-color: rgba(187, 187, 187, 0.548);
+    width: 30%;
+    min-height: 400px;
+    position: relative;
+    display:inline-block;
+    text-align:center;
+}
+
+
+
+.izq{
+    background-color: rgba(187, 187, 187, 0.548);
+    width: 30%;
+    min-height: 400px;
+    position: absolute;
+    float:left;
+    display:block;
+    
+}
+
+.der{
+    background-color: rgba(187, 187, 187, 0.548);
+    width: 40%;
+    min-height: 400px;
+    position: absolute;
+    float: right;
+    display:block;
+    
+}
