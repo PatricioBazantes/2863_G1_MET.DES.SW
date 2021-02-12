@@ -14,13 +14,13 @@
         <div class="cont1">
             <br><br>
             <h2>Acceso al sistema</h2>
-            <form action="Usuario/registro.php">
+            <form action="bd/login.php" method="POST">
                 <br>
                 <label for="fname">Nombre de usuario:</label><br>
-                <input type="text" id="fname" name="fname"><br>
+                <input type="text" id="usuario" name="usuario"><br>
                 <br>
                 <label for="lname">Contraseña:</label><br>
-                <input type="text" id="lname" name="lname"><br><br>
+                <input type="text" id="clave" name="clave"><br><br>
                 <br>
                 <input type="submit" value="Acceder">
                 <br><br><br>
