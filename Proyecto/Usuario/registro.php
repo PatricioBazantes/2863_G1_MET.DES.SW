@@ -16,19 +16,19 @@
             <form action="../bd/conexion.php" method="POST">
                 <br>
                 <label for="fname">Nombre de usuario:</label><br>
-                <input type="text" id="user" name="user"><br>
+                <input type="text" id="user" name="user" required><br>
                 <br>
                 <label for="fname">Nombre:</label><br>
-                <input type="text" id="fname" name="fname"><br>
+                <input type="text" id="fname" name="fname" required><br>
                 <br>
                 <label for="fname">Apellido:</label><br>
-                <input type="text" id="lname" name="lname"><br>
+                <input type="text" id="lname" name="lname" required><br>
                 <br>
                 <label for="fname">Correo:</label><br>
-                <input type="email" id="mail" name="mail"><br>
+                <input type="email" id="mail" name="mail" required><br>
                 <br>
                 <label for="lname">Contraseña:</label><br>
-                <input type="password" id="pass" name="pass"><br>
+                <input type="password" id="pass" name="pass" required><br>
                 <br>
                 <input type="submit" value="Enviar">
                 <br>
