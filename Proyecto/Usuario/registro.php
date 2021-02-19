@@ -1,3 +1,6 @@
+// Revisado por:
+// Fecha: 
+// Tecnica de  prueba: CB/CN
 <!DOCTYPE html>
 <html lang="en">
 <head>
