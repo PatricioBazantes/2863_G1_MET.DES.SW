@@ -1,6 +1,7 @@
-// Revisado por:
-// Fecha: 
-// Tecnica de  prueba: CB/CN
+// Revisado por: Nicole Escobar
+// Fecha: 02/19/2021
+// Tecnica de  prueba: Caja negra
+//Sin ninguna novedad
 <!DOCTYPE html>
 <html lang="en">
 <head>
