@@ -1,4 +1,12 @@
 <?php
+//Caja blanca
+//Nombre: Nicole Escobar
+//Fecha: 02/19/2021
+//Observaciones: El diagrama de flujo no corresponde al codigo expuesto
+//Existe un nodo:10 que no conecta con ningun otro nodo
+//El numero de rutas no estan correctas
+//El numero de aristas no coinciden 
+//El numero de nodos tampoco 
 //if (isset($_POST['registrar'])) {
     include('conexion.php');
     $usuario=$_POST['user'];
