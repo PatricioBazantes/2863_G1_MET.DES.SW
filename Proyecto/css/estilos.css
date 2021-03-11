@@ -1,5 +1,6 @@
 body{
-    background-color: rgb(4, 168, 4);
+    background: rgb(3,12,125);
+    background: linear-gradient(90deg, rgba(3,12,125,1) 0%, rgba(0,165,218,1) 48%, rgba(162,0,255,1) 100%);
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
 }
@@ -8,12 +9,21 @@ body{
     background-color: rgba(187, 187, 187, 0.548);
     width: 30%;
     min-height: 400px;
+    max-height: 100%;
+    position: relative;
+    display:inline-block;
+    text-align:center;
+    margin-bottom: 10px;
+}
+
+.cont2{
+    background-color: rgba(187, 187, 187, 0.548);
+    width: 30%;
+    min-height: 500px;
     position: relative;
     display:inline-block;
     text-align:center;
 }
-
-
 
 .izq{
     background-color: rgba(187, 187, 187, 0.548);
@@ -22,7 +32,6 @@ body{
     position: absolute;
     float:left;
     display:block;
-    
 }
 
 .der{
@@ -32,7 +41,6 @@ body{
     position: absolute;
     float: right;
     display:block;
-    
 }
 
 nav {margin:0;padding:0;box-sizing:border-box;font-size:20px;}
@@ -58,10 +66,15 @@ nav a{
 
 nav li{
     float:left;
-    width:17.8%;
+    width:19.5%;
     padding:15px 10px;
     background-color:#000;
     border:1px solid #000;
     text-align:center;
     color:#fff;
+}
+
+.degr{
+    background: rgba(224, 224, 224, 0.7);
+    border-radius: 10px;
 }
