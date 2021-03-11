@@ -8,6 +8,7 @@
     <title>Proyecto - G1</title>
 </head>
 <body>
+<!--Comentario de prueba-->
     <br>
     <div style="position: relative; width:100%; height:100%;">
        <br><br>
