@@ -22,7 +22,12 @@
             $_SESSION['apellidos'] = $apellido;
             $_SESSION['correo'] = $correo;
             $_SESSION['direccion'] = $direccion;
-            Header("Location: ../Administrador/datos.php");
+            if($_SESSION['tipo']=="Administrador"){
+                Header("Location: ../Administrador/datos.php");
+            }else{
+                Header("Location: ../Usuario/datos.php");
+            }
+            
             //$_SESSION['user_id'] = $result['ID'];
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);

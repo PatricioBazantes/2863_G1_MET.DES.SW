@@ -18,27 +18,23 @@ if(!isset($_SESSION['user'])){
     <body>
         <?php require_once('menu.php'); ?>
         <br><br><br><br>
-        <div class="container">
-           <div class="row degr">
-              <br><br><br>
-               <h1>Módulo de gestión de productos y recomendaciones</h1><br><br><br>
-                <h2>¿Qué deseas hacer?</h2>
-                <br><br><br>
-                <h3>Gestión de tipos de productos: </h3>
-                <form action="tipos.php" method="POST">
-                    <input type="submit" class="btn btn-success" value="Gestionar tipos">
-                </form>
-                <br>
-                <h3>Gestión de productos: </h3>
-                <form action="productos.php" method="POST">
-                    <input type="submit" class="btn btn-primary" value="Gestionar productos">
-                </form>
-                <h3>Gestión de recomendaciones de productos: </h3>
-                <form action="recoms.php" method="POST">
-                    <input type="submit" class="btn btn-secondary" value="Gestionar recomendaciones">
-                </form>
-                <br><br><br>
-           </div>
+        <div class="cont1">
+           <h1>Actualizar datos</h1>
+           <form action="../bd/actualizar_us.php" method="POST">
+                <label for="user">Nombre de usuario:</label><br>
+                <input type="text" id="user" name="user" value="<?php echo $_SESSION['user'];?>"><br>
+                <label for="nombre">Nombres:</label><br>
+                <input type="text" id="nombre" name="nombre" value="<?php echo $_SESSION['nombres']; ?>" required pattern="[A-Za-z]+"><br>
+                <label for="apellido">Apellidos:</label><br>
+                <input type="text" id="apellido" name="apellido" value="<?php echo $_SESSION['apellidos']; ?>" required pattern="[A-Za-z]+"><br>
+                <label for="correo">Correo:</label><br>
+                <input type="email" id="correo" name="correo" value="<?php echo $_SESSION['correo']; ?>" required><br>
+                <label for="direccion">Direccion:</label><br>
+                <input type="text" id="direccion" name="direccion" value="<?php echo $_SESSION['direccion']; ?>"><br>
+                <label for="cuenta">Tipo de cuenta:</label><br>
+                <input type="text" id="cuenta" name="cuenta" value="<?php echo $_SESSION['tipo']; ?>" disabled><br><br>
+                <input type="submit" class="btn btn-primary" value="Actualizar datos"><br><br>
+           </form>
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>

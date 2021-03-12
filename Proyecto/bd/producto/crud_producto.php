@@ -98,7 +98,7 @@ require_once('conexion.php');
 		// método para actualizar un libro, recibe como parámetro el libro
 		public function actualizar($producto){
 			$db=Db::conectar();
-			$actualizar=$db->prepare('UPDATE producto SET NOMBREPRODUCTO=:nombre, NOMBRECIENTIFICO=:nombrec,DESCRIPCIONPRODUCTO=:descripcion WHERE CODIGOPRODUCTO=:id');
+			$actualizar=$db->prepare('UPDATE producto SET NOMBREPRODUCTO=:nombre,NOMBRECIENTIFICO=:nombrec,DESCRIPCIONPRODUCTO=:descripcion WHERE CODIGOPRODUCTO=:id');
 			$actualizar->bindValue('id',$producto->getId());
 			$actualizar->bindValue('nombre',$producto->getNombre());
             $actualizar->bindValue('nombrec',$producto->getNombrec());

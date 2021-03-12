@@ -16,22 +16,27 @@
             Proyecto Grupo 1
         </h1>
         <br>
-        <div class="cont1">
-            <br><br>
+        <div class="container col-4">
+           <div class="row degr justify-content-center">
+               <br><br>
             <h2>Acceso al sistema</h2>
-            <form action="bd/login.php" method="POST">
+            <div class="col-10 text-center">
+                <form action="bd/login.php" method="POST">
                 <br>
                 <label for="fname">Nombre de usuario:</label><br>
-                <input type="text" id="usuario" name="usuario" pattern="[A-Za-z0-9]+"><br>
+                <input class="form-control" type="text" id="usuario" name="usuario" pattern="[A-Za-z0-9]+"><br>
                 <br>
                 <label for="lname">Contraseña:</label><br>
-                <input type="password" id="clave" name="clave" minlength="3"><br><br>
-                <br>
+                <input class="form-control" type="password" id="clave" name="clave" minlength="3"><br>
                 <input type="submit" class="btn btn-primary" name="Acceder" value="Acceder">
                 <br><br>
                 <input type="submit" class="btn btn-success" name="Registrar" value="Registrar">
                 <br><br>
             </form>
+            </div>
+           </div>
+            
+            
         </div>
     </div>
     
