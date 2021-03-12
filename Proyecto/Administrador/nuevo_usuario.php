@@ -35,15 +35,15 @@ if(!isset($_SESSION['user'])){
                 <form action='../bd/usuario/administrar_usuario.php' method='post'>
                     <input type='hidden' name='id' value="<?php echo $codigo ?>">
                     Nombre de usuario: <br>
-                    <input class="form-control" type='text' name='usuario'><br>
+                    <input class="form-control" type='text' name='usuario' required pattern="[A-Za-z0-9]+"><br>
                     Nombres: <br>
-                    <input class="form-control" type='text' name='nombre'><br>
+                    <input class="form-control" type='text' name='nombre' required pattern="[A-Za-z]+"><br>
                     Apellidos: <br>
-                    <input class="form-control" type='text' name='apellido'><br>
+                    <input class="form-control" type='text' name='apellido' required pattern="[A-Za-z]+"><br>
                     Correo: <br>
-                    <input class="form-control" type='text' name='correo'><br>
+                    <input class="form-control" type='email' name='correo' required ><br>
                     Clave: <br>
-                    <input class="form-control" type='password' name='clave'><br>
+                    <input class="form-control" type='password' name='clave' required minlength="3"><br>
                     Dirección: <br>
                     <input class="form-control" type='text' name='direccion'><br>
                     <input type='hidden' name='tipo' value='Usuario'><br>
