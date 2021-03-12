@@ -9,7 +9,6 @@ $producto= new Producto();
 //obtiene todos los libros con el método mostrar de la clase crud
 $producto=$crud->obtenerProducto($_GET['id']);
 
- 
 if(!isset($_SESSION['user'])){
     header('Location: ../index.php');
     exit;
