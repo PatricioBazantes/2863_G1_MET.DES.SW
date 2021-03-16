@@ -44,11 +44,11 @@ if(!isset($_SESSION['user'])){
                     <?php }?>
                     </select><br>
                     Nombre: <br>
-                    <input class="form-control" type='text' name='nombre'><br>
+                    <input class="form-control" type='text' name='nombre' required pattern="[A-Za-z0-9 ]+"><br>
                     Descripción: <br>
-                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" ></textarea><br>
+                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required pattern="[A-Za-z0-9]+"></textarea><br>
                     Tipo: <br>
-                    <input class="form-control" type='text' name='tipo'><br>
+                    <input class="form-control" type='text' name='tipo' required pattern="[A-Za-z]+"><br>
                     <input type='hidden' name='insertar' value='insertar'>
                     
                     <input type='submit' class="btn btn-primary" value='Guardar'>&nbsp;&nbsp;

@@ -45,11 +45,11 @@ if(!isset($_SESSION['user'])){
                            Tipo de producto: <br>
                         <input type='text' name='tipop' value='<?php echo $recom->getTipop()?>' readonly><br><br>
                            Nombre: <br>
-                        <input type='text' name='nombre' value='<?php echo $recom->getNombre()?>'><br><br>
+                        <input type='text' name='nombre' value='<?php echo $recom->getNombre()?>' required><br><br>
                            Descripción: <br>                          
-                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" ><?php echo $recom->getDescripcion()?></textarea><br><br>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" requiered><?php echo $recom->getDescripcion()?></textarea><br><br>
                            Tipo: <br>
-                        <input type='text' name='tipo' value='<?php echo $recom->getTipo()?>'><br><br>
+                        <input type='text' name='tipo' value='<?php echo $recom->getTipo()?>' required pattern="[A-Za-z]+"><br><br>
                         
                         <input type='hidden' name='actualizar' value='actualizar'><br>
                     
