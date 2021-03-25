@@ -87,6 +87,28 @@ require_once('conexion.php');
 			}
 			return $listaRecoms;
 		}
+
+		public function mostrarF($nombre){
+			$db=Db::conectar();
+			$listaRecoms=[];
+			$select=$db->query("SELECT * FROM recomendacion r INNER JOIN provincia prov ON r.CODIGOPROVINCIA=prov.CODIGOPROVINCIA INNER JOIN tipo t ON r.CODIGOTIPO=t.CODIGOTIPO INNER JOIN producto prod ON r.CODIGOPRODUCTO=prod.CODIGOPRODUCTO WHERE prov.NOMBREPROVINCIA='$nombre'");
+ 
+			foreach($select->fetchAll() as $recom){
+				$myRecom= new Recom();
+				$myRecom->setIdt($recom['CODIGOTIPO']);
+                $myRecom->setIdprov($recom['CODIGOPROVINCIA']);
+                $myRecom->setIdprod($recom['CODIGOPRODUCTO']);
+                $myRecom->setId($recom['TIEMPO']);
+				$myRecom->setNombre($recom['NOMBRERECOMENDACION']);
+                $myRecom->setDescripcion($recom['DESCRIPCIONRECOMENDACION']);
+                $myRecom->setTipo($recom['TIPORECOMENDACION']);
+                $myRecom->setTipop($recom['NOMBRETIPO']);
+                $myRecom->setProvincia($recom['NOMBREPROVINCIA']);
+                $myRecom->setProducto($recom['NOMBREPRODUCTO']);
+				$listaRecoms[]=$myRecom;
+			}
+			return $listaRecoms;
+		}
  
 		// método para eliminar un usuario, recibe como parámetro el id del usaurio
 		public function eliminar($id){

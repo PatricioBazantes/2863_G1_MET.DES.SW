@@ -34,23 +34,12 @@ if(!isset($_SESSION['user'])){
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body" style="text-align: center;">
-                                <script>
-                                    var Http = new XMLHttpRequest();
-                                    var latitud = 19.4978;
-                                    var logitud = -99.1269;
-                                    var url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitud + ',' + logitud
-                                        + '&key=AIzaSyA3jwGLDgrGrhuC0YNPQvpijWHSCcpYSr8';
-                                    Http.open('POST', url);
-                                    Http.send();
-                                    Http.onreadystatechange = (e) => {
-                                        console.log(Http.responseText);
-                                    }
-                                </script>
-                                <script>
+                                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                                <script type="text/javascript">
+                                    let url="";
                                     function getLocation(){
                                         if(navigator.geolocation){
                                             navigator.geolocation.getCurrentPosition(success, error);
-                                           //alert("Tu navegador tiene acceso a GEO")
                                         }else{
                                             alert("Tu navegador no tiene acceso a GEO :(")
                                         }
@@ -60,28 +49,85 @@ if(!isset($_SESSION['user'])){
                                         console.log(geolocationPosition);
                                         let lat = geolocationPosition.coords.latitude;
                                         let lon = geolocationPosition.coords.longitude;
-                                        document.getElementById("latitude").innerHTML = lat;
-                                        document.getElementById("longitude").innerHTML = lon;
-                                        //alert("Localización actual");
+                                        document.getElementById("latitude").value = lat;
+                                        document.getElementById("longitude").value = lon;
+                                        url = "https://forward-reverse-geocoding.p.rapidapi.com/v1/reverse?lat="+lat+"&lon="+lon+"&format=json&accept-language=en&polygon_threshold=0.0";
+
+                                        const settings = {
+                                            "async": false,
+                                            "crossDomain": true,
+                                            "url": url,
+                                            /*"https://forward-reverse-geocoding.p.rapidapi.com/v1/reverse?lat=-0.809816&lon=-91.115960&format=json&accept-language=en&polygon_threshold=0.0",*/
+                                            "method": "GET",
+                                            "headers": {
+                                                "x-rapidapi-key": "8c8aeb9fcemsh4a224a69366e58fp171c12jsn7e7818ed50ab",
+                                                "x-rapidapi-host": "forward-reverse-geocoding.p.rapidapi.com"
+                                            }
+                                        };
+
+                                        $.ajax(settings).done(function (response) {
+                                            console.log(response);
+                                            let pais = response.address.country;
+                                            let provincia = response.address.state;
+                                            let canton = response.address.county;
+                                            document.getElementById("pais").value = pais;
+                                            document.getElementById("provincia").value = provincia;
+                                            document.getElementById("canton").value = canton;
+                                            document.getElementById('btnBuscar').disabled=false;
+                                        });
                                     }
                                     
                                     function error(){
                                         alert("Debes permitir el acceso a tu ubicación para realizar está tarea.");
                                     }
-                                    
                                 </script>
                                 <br>
                                 <h2>Nueva Búsqueda</h2>
-                                <button class="btn btn-primary" onclick="getLocation()">Nueva búsqueda</button>
+                                <button class="btn btn-primary" onclick="getLocation()">Ver mi ubicación</button>
                                 <br><br>
-                                <h4>Latitud: </h4>
-                                <div id="latitude">
+                                <h5>Latitud: </h5>
+                                <div class="row justify-content-center">
+                                    <div class="input-group col-md-4">
+                                        <input type="text" class="form-control" id="latitude" readonly="readonly">
+                                    </div>
                                 </div>
                                 <br>
-                                <h4>Longitud: </h4>
-                                <div id="longitude">
+                                <h5>Longitud: </h5>
+                                <div class="row justify-content-center">
+                                    <div class="input-group col-md-4">
+                                        <input type="text" class="form-control" id="longitude" readonly="readonly">
+                                    </div>
                                 </div><br>
 
+                                <div class="container">
+                                    <form class="align-items-center" action="recomendaciones.php" method="POST">
+                                        <h5>País: </h5>
+                                        <div class="row justify-content-center">
+                                            <div class="input-group col-md-4">
+                                                <input type="text" class="form-control" id="pais" name="pais" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h5>Provincia: </h5>
+                                        <div class="row justify-content-center">
+                                            <div class="input-group col-md-4">
+                                                <input type="text" class="form-control" id="provincia" name="provincia" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h5>Cantón: </h5>
+                                        <div class="row justify-content-center">
+                                            <div class="input-group col-md-4">
+                                                <input type="text" class="form-control" id="canton" name="canton" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h4>Ver recomendaciones para mi ubicación:</h4>
+                                        <input type="submit" class="btn btn-primary" name="" id="btnBuscar" disabled="disabled" value="Buscar recomendaciones">
+                                    </form>
+                                    <br>
+                                </div>
+                                
                                 <div style="width: 100%"><iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=500&amp;hl=en&amp;q=Ecuador+(Prueba)&amp;t=&amp;z=7&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.maps.ie/route-planner.htm">Journey Planner</a></div>
                                 
                             </div>
@@ -102,7 +148,7 @@ if(!isset($_SESSION['user'])){
                 </footer>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
