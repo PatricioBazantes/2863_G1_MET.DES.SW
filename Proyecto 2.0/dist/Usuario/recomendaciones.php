@@ -6,8 +6,15 @@ require_once('../bd/recomendaciones/recom.php');
 
 $crud=new CrudRecom();
 $recom= new Recom();
+
+$idC=$_POST['id'];
+$idU=$_POST['usuario'];
 $nombre=$_POST['provincia'];
-$listaRecoms=$crud->mostrarF($nombre);
+$pais=$_POST['pais'];
+$canton=$_POST['canton'];
+$desc="Búsqueda de recomendaciones para ".$pais.", ".$nombre.", ".$canton.".";
+$listaRecoms=$crud->mostrarF($nombre,$idC,$idU,$desc);
+//$listaTipos=$crud->listart($nombre);
  
 if(!isset($_SESSION['user'])){
     header('Location: ../index.php');
@@ -55,7 +62,8 @@ if(!isset($_SESSION['user'])){
                                     <?php echo $_POST['provincia']; ?>
                                 <h5>Cantón: </h5>
                                     <?php echo $_POST['canton']; ?>
-                                <br><br>
+                                <br>
+                                <br>
                                 <?php 
                                 }else{ ?>
                                     <h3>Hubo un error al encontrar tu ubicación</h3>
@@ -74,10 +82,11 @@ if(!isset($_SESSION['user'])){
                                   <thead>
                                     <tr>
                                       <th WIDTH="10%" scope="col">Producto</th>
+                                      <th WIDTH="10%" scope="col">Tipo producto</th>
                                       <th WIDTH="10%" scope="col">Provincia</th>
-                                      <th WIDTH="12%" scope="col">Nombre</th>
+                                      <th WIDTH="10%" scope="col">Nombre</th>
                                       <th WIDTH="10%" scope="col">Tipo</th>
-                                      <th WIDTH="25%" scope="col">Descricpión</th>
+                                      <th WIDTH="20%" scope="col">Descripción</th>
                                       <th WIDTH="5%" scope="col">Tiempo</th>
                                     </tr>
                                   </thead>
@@ -85,10 +94,11 @@ if(!isset($_SESSION['user'])){
                                     <?php foreach ($listaRecoms as $recom) {?>
                                     <tr>
                                       <td WIDTH="10%"><?php echo $recom->getProducto() ?></td>
+                                      <td WIDTH="10%"><?php echo $recom->getTipop() ?></td>
                                       <td WIDTH="10%"><?php echo $recom->getProvincia() ?></td>
-                                      <td WIDTH="12%"><?php echo $recom->getNombre() ?></td>
+                                      <td WIDTH="10%"><?php echo $recom->getNombre() ?></td>
                                       <td WIDTH="10%"><?php echo $recom->getTipo() ?></td>
-                                      <td WIDTH="25%"><?php echo $recom->getDescripcion() ?></td>
+                                      <td WIDTH="20%"><?php echo $recom->getDescripcion() ?></td>
                                       <td WIDTH="5%"><?php echo $recom->getId() ?></td>
                                     </tr>
                                     <?php }?>

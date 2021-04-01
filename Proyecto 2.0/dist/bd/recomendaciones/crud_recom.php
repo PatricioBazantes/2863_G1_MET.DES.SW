@@ -62,6 +62,24 @@ require_once('conexion.php');
 			}
 			return $listaP;
 		}
+
+		//-----------------------------------------------------------
+
+		/*public function listart($provincia){
+			$db=Db::conectar();
+			$listaT=[];
+			$select=$db->query("SELECT DISTINCT NOMBRETIPO FROM producto p INNER JOIN tipo t ON 
+								p.CODIGOTIPO=t.CODIGOTIPO INNER JOIN provincia prov ON 
+								p.CODIGOPROVINCIA=prov.CODIGOPROVINCIA WHERE prov.NOMBREPROVINCIA='$provincia'");
+ 
+			foreach($select->fetchAll() as $tipo){
+				$myTipo= new Tipo();
+				$myTipo->setId(1);
+				$myTipo->setNombre($tipo['NOMBRETIPO']);
+				$listaT[]=$myTipo;
+			}
+			return $listaT;
+		}*/
         
         //-----------------------------------------------------------
  
@@ -88,11 +106,13 @@ require_once('conexion.php');
 			return $listaRecoms;
 		}
 
-		public function mostrarF($nombre){
+		public function mostrarF($nombre, $idC, $idU, $desc){
 			$db=Db::conectar();
 			$listaRecoms=[];
 			$select=$db->query("SELECT * FROM recomendacion r INNER JOIN provincia prov ON r.CODIGOPROVINCIA=prov.CODIGOPROVINCIA INNER JOIN tipo t ON r.CODIGOTIPO=t.CODIGOTIPO INNER JOIN producto prod ON r.CODIGOPRODUCTO=prod.CODIGOPRODUCTO WHERE prov.NOMBREPROVINCIA='$nombre'");
- 
+			date_default_timezone_set("America/Guayaquil");
+			$date=date('Y-m-d H:i:s');
+
 			foreach($select->fetchAll() as $recom){
 				$myRecom= new Recom();
 				$myRecom->setIdt($recom['CODIGOTIPO']);
@@ -105,7 +125,19 @@ require_once('conexion.php');
                 $myRecom->setTipop($recom['NOMBRETIPO']);
                 $myRecom->setProvincia($recom['NOMBREPROVINCIA']);
                 $myRecom->setProducto($recom['NOMBREPRODUCTO']);
+				
+				$insert=$db->prepare('INSERT INTO consulta values(:id,:idu,:idt,:idprov,:idprod,:fecha,:descripcion)');
+				$insert->bindValue('id',$idC);
+				$insert->bindValue('idu',$idU);
+				$insert->bindValue('idt',$myRecom->getIdt());
+				$insert->bindValue('idprov',$myRecom->getIdprov());
+				$insert->bindValue('idprod',$myRecom->getIdprod());
+				$insert->bindValue('fecha',$date);
+				$insert->bindValue('descripcion',$desc);
+				$insert->execute();
+				
 				$listaRecoms[]=$myRecom;
+				$idC=$idC+1;
 			}
 			return $listaRecoms;
 		}

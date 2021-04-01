@@ -20,7 +20,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="ubicacion.php">Nueva Búsqueda</a>
-                                    <a class="nav-link" href="">Historial de búsquedas</a>
+                                    <a class="nav-link" href="historial.php">Historial de búsquedas</a>
                                 </nav>
                             </div>
                         </div>

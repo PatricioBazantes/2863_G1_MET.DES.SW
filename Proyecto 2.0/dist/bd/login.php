@@ -8,9 +8,10 @@
             $variable1 = "El nombre de usuario o contraseña es incorrecto";
             Header("Location: ../error.php/?variable1=$variable1");
         }else{
-            $sql = "SELECT nombreusuario,nombres,apellidos,correo,clave,tipo,direccion FROM usuario WHERE nombreusuario = '".$usuario."' and clave='".$clave."';";
+            $sql = "SELECT codigousuario,nombreusuario,nombres,apellidos,correo,clave,tipo,direccion FROM usuario WHERE nombreusuario = '".$usuario."' and clave='".$clave."';";
             $query=mysqli_query($conn,$sql);
             while ($registro = mysqli_fetch_array($query)){
+                $idUsuario = $registro['codigousuario'];
                 $user = $registro['nombreusuario'];
                 $nombres = $registro['nombres'];
                 $apellidos = $registro['apellidos'];
@@ -24,6 +25,7 @@
 
             if ($counter==1) {
                 //echo "<br>Acceso al sistema";
+                $_SESSION['idUsuario'] = $idUsuario;
                 $_SESSION['user'] = $user;
                 $_SESSION['nombres'] = $nombres;
                 $_SESSION['apellidos'] = $apellidos;

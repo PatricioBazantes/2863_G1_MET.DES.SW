@@ -8,6 +8,7 @@
 		private $descripcion;
         private $provincia;
         private $tipo;
+		private $tiempo;
  
 		function __construct(){}
  
@@ -73,6 +74,14 @@
  
 		public function setTipo($tipo){
 			$this->tipo = $tipo;
+		}
+
+		public function getTiempo(){
+		return $this->tiempo;
+		}
+	
+		public function setTiempo($tiempo){
+			$this->tiempo = $tiempo;
 		}
 	}
 ?>
