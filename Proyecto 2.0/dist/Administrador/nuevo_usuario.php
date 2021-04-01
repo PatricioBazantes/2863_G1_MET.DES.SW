@@ -67,7 +67,7 @@ if(!isset($_SESSION['user'])){
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Correo</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" name="correo" type="correo" aria-describedby="emailHelp"  required />
+                                                <input class="form-control py-4" id="inputEmailAddress" name="correo" type="email" aria-describedby="emailHelp"  required />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputAddress">Contraseña</label>

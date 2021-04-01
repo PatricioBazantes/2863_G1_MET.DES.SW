@@ -61,7 +61,11 @@ if(!isset($_SESSION['user'])){
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Nombre Científico</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" name="nombrec" type="correo" aria-describedby="emailHelp"  required />
+                                                <input class="form-control py-4" id="inputEmailAddress" name="nombrec" type="text" aria-describedby="emailHelp"  required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="inputEmailAddress">Tiempo de cultivo</label>
+                                                <input class="form-control py-4" id="inputEmailAddress" name="tiempo" type="text" aria-describedby="emailHelp"  required />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputAddress">Descripción del producto</label>

@@ -9,13 +9,14 @@ require_once('conexion.php');
 		// método para insertar, recibe como parámetro un objeto de tipo tipo
 		public function insertar($producto){
 			$db=Db::conectar();
-			$insert=$db->prepare('INSERT INTO producto values(:idtipo, :idprovincia,:id,:nombre,:nombrec,:descripcion)');
+			$insert=$db->prepare('INSERT INTO producto values(:idtipo, :idprovincia,:id,:nombre,:nombrec,:descripcion,:tiempo)');
             $insert->bindValue('idtipo',$producto->getIdtipo());
             $insert->bindValue('idprovincia',$producto->getIdprovincia());
             $insert->bindValue('id',$producto->getId());
 			$insert->bindValue('nombre',$producto->getNombre());
             $insert->bindValue('nombrec',$producto->getNombrec());
 			$insert->bindValue('descripcion',$producto->getDescripcion());
+			$insert->bindValue('tiempo',$producto->getTiempo());
 			$insert->execute();
 		}
         

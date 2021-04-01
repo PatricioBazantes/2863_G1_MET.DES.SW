@@ -12,6 +12,7 @@ $producto= new Producto();
         $producto->setIdprovincia($_POST['codigop']);
 		$producto->setId($_POST['id']);
         $producto->setNombre($_POST['nombre']);
+		$producto->setTiempo($_POST['tiempo']);
         $producto->setNombrec($_POST['nombrec']);
 		$producto->setDescripcion($_POST['descripcion']);
 		//llama a la función insertar definida en el crud
