@@ -64,7 +64,7 @@ if(!isset($_SESSION['user'])){
                                             /*"https://forward-reverse-geocoding.p.rapidapi.com/v1/reverse?lat=-0.809816&lon=-91.115960&format=json&accept-language=en&polygon_threshold=0.0",*/
                                             "method": "GET",
                                             "headers": {
-                                                "x-rapidapi-key": "8c8aeb9fcemsh4a224a69366e58fp171c12jsn7e7818ed50ab",
+                                                "x-rapidapi-key": "YourAPIKey",
                                                 "x-rapidapi-host": "forward-reverse-geocoding.p.rapidapi.com"
                                             }
                                         };
