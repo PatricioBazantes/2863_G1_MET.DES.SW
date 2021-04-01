@@ -42,52 +42,6 @@ if(!isset($_SESSION['user'])){
                         <div class="card mb-4">
                             <div class="card-body" style="text-align: center;">
                                 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-                                <script type="text/javascript">
-                                    let url="";
-                                    function getLocation(){
-                                        if(navigator.geolocation){
-                                            navigator.geolocation.getCurrentPosition(success, error);
-                                        }else{
-                                            alert("Tu navegador no tiene acceso a GEO :(")
-                                        }
-                                    }
-                                    
-                                    function success(geolocationPosition){
-                                        console.log(geolocationPosition);
-                                        let lat = geolocationPosition.coords.latitude;
-                                        let lon = geolocationPosition.coords.longitude;
-                                        document.getElementById("latitude").value = lat;
-                                        document.getElementById("longitude").value = lon;
-                                        url = "https://forward-reverse-geocoding.p.rapidapi.com/v1/reverse?lat="+lat+"&lon="+lon+"&format=json&accept-language=en&polygon_threshold=0.0";
-
-                                        const settings = {
-                                            "async": false,
-                                            "crossDomain": true,
-                                            "url": url,
-                                            /*"https://forward-reverse-geocoding.p.rapidapi.com/v1/reverse?lat=-0.809816&lon=-91.115960&format=json&accept-language=en&polygon_threshold=0.0",*/
-                                            "method": "GET",
-                                            "headers": {
-                                                "x-rapidapi-key": "8c8aeb9fcemsh4a224a69366e58fp171c12jsn7e7818ed50ab",
-                                                "x-rapidapi-host": "forward-reverse-geocoding.p.rapidapi.com"
-                                            }
-                                        };
-
-                                        $.ajax(settings).done(function (response) {
-                                            console.log(response);
-                                            let pais = response.address.country;
-                                            let provincia = response.address.state;
-                                            let canton = response.address.county;
-                                            document.getElementById("pais").value = pais;
-                                            document.getElementById("provincia").value = provincia;
-                                            document.getElementById("canton").value = canton;
-                                            document.getElementById('btnBuscar').disabled=false;
-                                        });
-                                    }
-                                    
-                                    function error(){
-                                        alert("Debes permitir el acceso a tu ubicación para realizar está tarea.");
-                                    }
-                                </script>
                                 <br>
                                 <h2>Historial de Búsquedas</h2>
                                 <div class="card-header">
