@@ -121,7 +121,6 @@ if(!isset($_SESSION['user'])){
 				                  </tbody>
 				                </table>
                                 </div>
-
                             </div>
                         </div>
                     </div>
