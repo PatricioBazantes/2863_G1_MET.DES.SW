@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+require_once('../bd/consultas/crud_consulta.php');
+$crud=new CrudConsulta();
+$codigo=$crud->obtenerid();
  
 if(!isset($_SESSION['user'])){
     header('Location: ../index.php');
@@ -101,6 +105,8 @@ if(!isset($_SESSION['user'])){
 
                                 <div class="container">
                                     <form class="align-items-center" action="recomendaciones.php" method="POST">
+                                        <input type='hidden' name='id' value="<?php echo $codigo ?>">
+                                        <input type='hidden' name='usuario' value="<?php echo $_SESSION['idUsuario'] ?>">
                                         <h5>País: </h5>
                                         <div class="row justify-content-center">
                                             <div class="input-group col-md-4">
@@ -128,7 +134,7 @@ if(!isset($_SESSION['user'])){
                                     <br>
                                 </div>
                                 
-                                <div style="width: 100%"><iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=500&amp;hl=en&amp;q=Ecuador+(Prueba)&amp;t=&amp;z=7&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.maps.ie/route-planner.htm">Journey Planner</a></div>
+                                <div style="width: 100%"><iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=500&amp;hl=en&amp;q=Ecuador+(Prueba)&amp;t=&amp;z=7&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.maps.ie/route-planner.htm">Mapa Ecuador</a></div>
                                 
                             </div>
                         </div>
